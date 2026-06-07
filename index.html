@@ -35,6 +35,7 @@
   <link rel="icon" href="./static/images/logo.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
@@ -270,7 +271,23 @@
     
     <div class="content">
       <p>
-        BBBB
+        Suppose the "player" is referred to in multiple ways.
+        Retained tokens for $\mathcal{T}_{1}$ and $\mathcal{T}_{2}$ partially overlap, but some noisy.
+        Sometimes, these tokens also point to background areas or other objects.
+      </p>
+    </div>
+
+    <!-- Sub Figure -->
+    <figure class="image" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+      <img
+        src="./static/images/method-1.png"
+        alt="LiteLVLM-sub"
+        style="width:100%;">
+    </figure>
+
+    <div class="content">
+      <p>
+        To reduce the noise and determine the similarity-aware and context-aware tokens, we only retain their intersection - adaptive token selection.
       </p>
     </div>
 
