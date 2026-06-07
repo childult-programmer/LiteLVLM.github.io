@@ -132,7 +132,7 @@
             How long did you wait for ChatGPT or Gemini to answer a question about an uploaded image? Or, if you have ever run these models on your laptop, how much memory did they take up? Such large vision-language models (LVLMs) can understand images alongside text, but this becomes slow and computationally expensive since they process hundreds or even thousands of visual tokens.
           </p>
           <p>
-            Our work explores ways to accelerate LVLM inference by removing unnecessary visual tokens while preserving important ones. Our finding is contrary to common intuition. We found that visual tokens belonging to the object are surprisingly less similar to the input text – akin to the image pieces within a black bear being barely related to the text “a black bear.”
+            Our work explores ways to accelerate LVLM inference by removing unnecessary visual tokens while preserving important ones. <strong>Our finding is contrary to common intuition.</strong> We found that <strong>visual tokens belonging to the object are surprisingly less similar to the input text</strong> – akin to the image pieces within a black bear being barely related to the text “a black bear.”
           </p>
           <p>
             Motivated by this insight, we develop an efficient technique called LiteLVLM to segment text-described objects at the pixel level. This brings you faster, lighter, and easier-to-use LVLMs, even if your device is not the latest one.
