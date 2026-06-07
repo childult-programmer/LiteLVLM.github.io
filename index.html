@@ -253,7 +253,10 @@
 
     <div class="content">
       <p>
-        AAAA
+        Motivated by our analysis of CLIP, we design <strong>LiteLVLM</strong>, a training-free, text-guided token pruning method for efficient pixel grounding in Large Vision-Language Models. 
+        Considering the visual-text similarity reversal, we first retain visual tokens with <strong>low similarity</strong> to the [EOS] token - similarity-aware tokens.
+        From the pruned tokens, we then recover <strong>contextually informative tokens</strong> - context-aware tokens.
+        Finally, these selected visual tokens pass through the LLM, and the pixel decoder generates a pixel-level segmentation mask.
       </p>
     </div>
     
