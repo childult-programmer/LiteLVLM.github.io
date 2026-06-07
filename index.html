@@ -254,10 +254,10 @@
 
     <div class="content">
       <p>
-        Motivated by our analysis of CLIP, we design <strong>LiteLVLM</strong>, a training-free, text-guided token pruning method for efficient pixel grounding in Large Vision-Language Models. 
-        Considering the visual-text similarity reversal, we first retain visual tokens with <strong>low similarity</strong> to the [EOS] token - similarity-aware tokens.
-        From the pruned tokens, we then recover <strong>contextually informative tokens</strong> - context-aware tokens.
-        Finally, these selected visual tokens pass through the LLM, and the pixel decoder generates a pixel-level segmentation mask.
+        Motivated by our analysis of CLIP, we design <strong>LiteLVLM</strong>, a text-guided token pruning method for efficient pixel grounding. 
+        Considering the visual-text similarity reversal, we first retain visual tokens with <strong>low similarity</strong> to the [EOS] token - <strong>similarity-aware tokens.</strong>
+        Then, we recover <strong>contextually informative tokens</strong> from the pruned tokens - <strong>context-aware tokens.</strong>
+        Finally, these selected tokens pass through the LLM, and the pixel decoder generates a pixel-level segmentation mask.
       </p>
     </div>
     
@@ -272,8 +272,8 @@
     <div class="content">
       <p>
         Suppose the "player" is referred to in multiple ways.
-        Retained tokens for $\mathcal{T}_{1}$ and $\mathcal{T}_{2}$ partially overlap, but some noisy.
-        Sometimes, these tokens also point to background areas or other objects.
+        Although different expression tend to select similar tokens, each set contains noisy tokens (e.g., background regions or unrelated objects).
+        To focus on the most reliable visual evidence, we retain only the common tokens - adaptive token selection.
       </p>
     </div>
 
@@ -284,12 +284,6 @@
         alt="LiteLVLM-sub"
         style="width:100%;">
     </figure>
-
-    <div class="content">
-      <p>
-        To reduce the noise and determine the similarity-aware and context-aware tokens, we only retain their intersection - adaptive token selection.
-      </p>
-    </div>
 
   </div>
 </section>
