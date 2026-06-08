@@ -248,29 +248,32 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <img
-      src="static/images/think.png"
-      alt="logo"
-      style="height: 56px; margin-right: 14px;"
-    >
-    <h2 class="title is-2 mb-0">LiteLVLM</h2>
-
-    <div class="content">
-      <p>
-        Motivated by our analysis of CLIP, we design <strong>LiteLVLM</strong>, a text-guided token pruning method for efficient pixel grounding. 
-        Considering the visual-text similarity reversal, we first retain visual tokens with <strong>low similarity</strong> to the [EOS] token - <strong>similarity-aware tokens.</strong>
-        Then, we recover <strong>contextually informative tokens</strong> from the pruned tokens - <strong>context-aware tokens.</strong>
-        Finally, these selected tokens pass through the LLM, and the pixel decoder generates a <strong>pixel-level segmentation mask</strong>.
-      </p>
-    </div>
-    
-    <!-- Main Figure -->
-    <figure class="image" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+    <div class="is-flex is-justify-content-center is-align-items-center">
       <img
-        src="./static/images/method.png"
-        alt="LiteLVLM"
-        style="width:100%;">
-    </figure>
+        src="static/images/think.png"
+        alt="logo"
+        style="height: 70px; margin-right: 14px;"
+      >
+      <h2 class="title is-2 mb-0">LiteLVLM</h2>
+    </div>
+  </div>
+  
+  <div class="content">
+    <p>
+      Motivated by our analysis of CLIP, we design <strong>LiteLVLM</strong>, a text-guided token pruning method for efficient pixel grounding. 
+      Considering the visual-text similarity reversal, we first retain visual tokens with <strong>low similarity</strong> to the [EOS] token - <strong>similarity-aware tokens.</strong>
+      Then, we recover <strong>contextually informative tokens</strong> from the pruned tokens - <strong>context-aware tokens.</strong>
+      Finally, these selected tokens pass through the LLM, and the pixel decoder generates a <strong>pixel-level segmentation mask</strong>.
+    </p>
+  </div>
+    
+  <!-- Main Figure -->
+  <figure class="image" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+    <img
+      src="./static/images/method.png"
+      alt="LiteLVLM"
+      style="width:100%;">
+  </figure>
   </div>
 </section>
   
