@@ -173,8 +173,7 @@
             would be impossible without nerfies since it would require going through a wall.
           </p>
           <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
+            <source src="./static/videos/dollyzoom-stacked.mp4" type="video/mp4">
           </video>
         </div>
       </div>
@@ -182,25 +181,21 @@
 
       <!-- Matting. -->
       <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
+        <div class="content">
+          <h2 class="title is-3">Matting</h2>
+          <p>
+            As a byproduct of our method, we can also solve the matting problem by ignoring
+            samples that fall outside of a bounding box during rendering.
+          </p>
+          <video id="matting-video" controls playsinline height="100%">
+            <source src="./static/videos/matting.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
-    </div>
-    <!--/ Matting. -->
+      <!--/ Matting. -->
 
-  <div class="container is-max-desktop">
+    </div>
+
     <!-- Animation. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
@@ -215,25 +210,38 @@
             frame.
           </p>
         </div>
+
         <div class="columns is-vcentered interpolation-panel">
           <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
+            <img
+              src="./static/images/interpolate_start.jpg"
+              class="interpolation-image"
+              alt="Interpolate start reference image."
+            />
             <p>Start Frame</p>
           </div>
+
           <div class="column interpolation-video-column">
             <div id="interpolation-image-wrapper">
               Loading...
             </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
+            <input
+              class="slider is-fullwidth is-large is-info"
+              id="interpolation-slider"
+              step="1"
+              min="0"
+              max="100"
+              value="0"
+              type="range"
+            >
           </div>
+
           <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
+            <img
+              src="./static/images/interpolate_end.jpg"
+              class="interpolation-image"
+              alt="Interpolation end reference image."
+            />
             <p class="is-bold">End Frame</p>
           </div>
         </div>
@@ -249,32 +257,52 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="is-flex is-justify-content-center is-align-items-center">
-      <img
-        src="static/images/logo.png"
-        alt="logo"
-        style="height: 70px; margin-right: 14px;"
-      >
-      <h2 class="title is-2 mb-0">LiteLVLM</h2>
+
+    <!-- LiteLVLM Title -->
+    <div class="has-text-centered mb-5">
+      <div class="is-flex is-justify-content-center is-align-items-center">
+        <img
+          src="./static/images/logo.png"
+          alt="LiteLVLM Logo"
+          style="height: 70px; margin-right: 14px;"
+        >
+        <h2 class="title is-2 mb-0">LiteLVLM</h2>
+      </div>
     </div>
-  </div>
-  
-  <div class="content">
-    <p>
-      Motivated by our analysis of CLIP, we design <strong>LiteLVLM</strong>, a text-guided token pruning method for efficient pixel grounding. 
-      Considering the visual-text similarity reversal, we first retain visual tokens with <strong>low similarity</strong> to the [EOS] token - <strong>similarity-aware tokens.</strong>
-      Then, we recover <strong>contextually informative tokens</strong> from the pruned tokens - <strong>context-aware tokens.</strong>
-      Finally, these selected tokens pass through the LLM, and the pixel decoder generates a <strong>pixel-level segmentation mask</strong>.
-    </p>
-  </div>
-    
-  <!-- Main Figure -->
-  <figure class="image" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
-    <img
-      src="./static/images/method.png"
-      alt="LiteLVLM"
-      style="width:100%;">
-  </figure>
+
+    <!-- LiteLVLM Description -->
+    <div
+      class="content has-text-justified"
+      style="max-width: 900px; margin: 0 auto;"
+    >
+      <p>
+        Motivated by our analysis of CLIP, we design
+        <strong>LiteLVLM</strong>, a text-guided token pruning method for
+        efficient pixel grounding. Considering the visual-text similarity
+        reversal, we first retain visual tokens with
+        <strong>low similarity</strong> to the [EOS] token —
+        <strong>similarity-aware tokens</strong>. Then, we recover
+        <strong>contextually informative tokens</strong> from the pruned tokens —
+        <strong>context-aware tokens</strong>. Finally, these selected tokens
+        pass through the LLM, and the pixel decoder generates a
+        <strong>pixel-level segmentation mask</strong>.
+      </p>
+    </div>
+
+    <!-- LiteLVLM Main Figure -->
+    <div class="has-text-centered" style="margin-top: 2rem;">
+      <img
+        src="./static/images/method.png"
+        alt="LiteLVLM Method Overview"
+        style="
+          max-width: 950px;
+          width: 100%;
+          height: auto;
+          display: inline-block;
+        "
+      >
+    </div>
+
   </div>
 </section>
   
