@@ -26,398 +26,725 @@
         rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/index.css?v=20260623-token-comparison1">
   <link rel="icon" href="./static/images/wand.png">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <script defer src="./static/js/evaluation-table.js?v=20260622-eval-orange1"></script>
+  <script defer src="./static/js/index.js?v=20260623-token-comparison1"></script>
 </head>
 <body>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <div style="color:#d32f2f; font-weight:700; font-size:1.95rem; margin-bottom:0.5rem;">
-            [ICML 2026]
-          </div>
-          <h1 class="title is-1 publication-title">
-            CLIP Tricks You: Training-free Token Pruning for Efficient Pixel Grounding in Large Vision-Language Models
-          </h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://childult-programmer.github.io/">Sangin Lee</a>,</span>
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=vMrPtrAAAAAJ&hl=en">Yukyung Choi</a></span>
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">Sejong University</span>
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="https://arxiv.org/pdf/2605.13178"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2605.13178"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/sejong-rcv/LiteLVLM"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-              <!-- Demo Link. -->
-              <span class="link-block">
-                <a href="https://litelvlm-demo.com/"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-play"></i>
-                  </span>
-                  <span>Demo</span>
-                  </a>
-              </span>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="hero teaser">
-  <div class="container is-max-desktop">
+<main>
+  <section class="hero publication-hero">
     <div class="hero-body">
-      <h2 class="subtitle has-text-centered">
-        <strong>TL;DR:</strong> LiteLVLM is a training-free, text-guided token pruning method for efficient pixel grounding in Large Vision-Language Models. <strong>Don't let CLIP trick you!</strong>
-      </h2>
-      <img src="./static/images/teaser.svg" id="Teaser" style="width:100%; height:auto;" alt="">
-    </div>
-  </div>
-</section>
-
-<section class="section" style="background-color: #f5f5f5;">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Lay Summary</h2>
-        <div class="content has-text-justified">
-          <p>
-            How long did you wait for ChatGPT or Gemini to answer a question about an uploaded image? Or, if you have ever run these models on your laptop, how much memory did they take up? Such large vision-language models (LVLMs) can understand images alongside text, but this becomes slow and computationally expensive since they process hundreds or even thousands of visual tokens.
-          </p>
-          <p>
-            Our work explores ways to accelerate LVLM inference by removing unnecessary visual tokens while preserving important ones. Our finding is contrary to common intuition. We found that <strong>visual tokens belonging to the object are surprisingly less similar to the input text</strong> – akin to the image pieces within a black bear being barely related to the text “a black bear.”
-          </p>
-          <p>
-            Motivated by this insight, we develop an efficient technique called LiteLVLM to segment text-described objects at the pixel level. This brings you faster, lighter, and easier-to-use LVLMs, even if your device is not the latest one.
-          </p>
-        </div>
-
-        <!-- Summary Image -->
+      <div class="container is-max-desktop">
         <div class="has-text-centered">
-          <img
-            src="./static/images/summary.png"
-            id="Summary"
-            alt=""
-            style="width: 100%; height: auto;"
-          >
-        </div>
-        
-      </div>
-    </div>
-  </div>
-</section>
+          <h1 class="title publication-title">
+            <span class="title-main title-main">CLIP Tricks You:</span>
+            <span class="title-sub title-sub-black">
+              <span class="title-sub-line title-subtitle-line">Training-free Token Pruning for Efficient Pixel Grounding</span>
+              <span class="title-sub-line title-subtitle-line">in Large Vision-Language Models</span>
+            </span>
+          </h1>
+          <div class="publication-venue">ICML 2026</div>
 
-<section class="section">
-  <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Matting</h2>
-          <p>
-            As a byproduct of our method, we can also solve the matting problem by ignoring
-            samples that fall outside of a bounding box during rendering.
-          </p>
-          <video id="matting-video" controls playsinline height="100%">
-            <source src="./static/videos/matting.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!--/ Matting. -->
-
-    </div>
-
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img
-              src="./static/images/interpolate_start.jpg"
-              class="interpolation-image"
-              alt="Interpolate start reference image."
-            />
-            <p>Start Frame</p>
+          <div class="publication-authors">
+            <span class="author-block">
+              <a href="https://childult-programmer.github.io/">Sangin Lee</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=vMrPtrAAAAAJ&hl=en">Yukyung Choi</a>
+            </span>
           </div>
 
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input
-              class="slider is-fullwidth is-large is-info"
-              id="interpolation-slider"
-              step="1"
-              min="0"
-              max="100"
-              value="0"
-              type="range"
-            >
+          <div class="publication-affiliation">
+            Sejong University
           </div>
 
-          <div class="column is-3 has-text-centered">
-            <img
-              src="./static/images/interpolate_end.jpg"
-              class="interpolation-image"
-              alt="Interpolation end reference image."
-            />
-            <p class="is-bold">End Frame</p>
+          <div class="publication-links">
+            <span class="link-block">
+              <a href="https://arxiv.org/pdf/2605.13178"
+                 class="external-link button is-dark is-rounded paper-button">
+                <span class="icon">
+                  <i class="fas fa-file-pdf"></i>
+                </span>
+                <span>Paper</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://arxiv.org/abs/2605.13178"
+                 class="external-link button is-dark is-rounded paper-button">
+                <span class="icon">
+                  <i class="ai ai-arxiv"></i>
+                </span>
+                <span>arXiv</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://github.com/sejong-rcv/LiteLVLM"
+                 class="external-link button is-dark is-rounded paper-button">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://litelvlm-demo.com/"
+                 class="external-link button is-dark is-rounded paper-button">
+                <span class="icon">
+                  <i class="fas fa-play"></i>
+                </span>
+                <span>Demo</span>
+              </a>
+            </span>
           </div>
         </div>
-        <br/>
-        <!--/ Interpolating. -->
-
       </div>
     </div>
-    <!--/ Animation. -->
+  </section>
 
-  </div>
-</section>
+  <section class="section teaser-section">
+    <div class="container is-max-desktop">
+      <div class="tldr-block">
+        <div class="section-eyebrow">TL;DR</div>
+        <p>
+          LiteLVLM is a <b>training-free, text-guided</b> token pruning method<br> for efficient pixel grounding
+          in Large Vision-Language Models. <strong>Don't let CLIP trick you!</strong>
+        </p>
+      </div>
+    </div>
+  </section>
 
-<section class="section">
-  <div class="container is-max-desktop">
+  <section class="section story-section">
+    <div class="container is-max-desktop">
+      <div class="story-block story-block-compact">
+        <div class="section-heading">
+          <div class="section-eyebrow story-pill">MOTIVATION</div>
+          <h2 class="title is-2"><span>Do</span> We Need All Visual Tokens?</h2>
+        </div>
 
-    <!-- LiteLVLM Title -->
-    <div class="has-text-centered mb-5">
-      <div class="is-flex is-justify-content-center is-align-items-center">
+        <article class="insight-card insight-card-wide">
+          <div class="insight-label">01</div>
+          <h3>Visual Tokens Are Not Free</h3>
+          <p>
+            Ever asked ChatGPT or Gemini about an image and waited longer than expected? These large vision-language models are powerful, but they can be slow because they process hundreds or even thousands of visual tokens.
+          </p>
+        </article>
+
         <img
-          src="./static/images/logo.png"
-          alt="LiteLVLM Logo"
-          style="height: 70px; margin-right: 14px;"
+          src="./static/images/motive.svg"
+          style="width: 80%; height: auto; display: block; margin: 0 auto;"
         >
-        <h2 class="title is-2 mb-0">LiteLVLM</h2>
+      </div>
+
+      <div class="story-block">
+        <div class="section-heading">
+          <div class="section-eyebrow story-pill">SOLUTION</div>
+          <h2 class="title is-2"><span>A</span> Counterintuitive Finding</h2>
+        </div>
+
+        <article class="insight-card insight-card-wide">
+          <div class="insight-label">02</div>
+          <h3>Visual-Text Similarity Reversal</h3>
+          <p>
+            We explore how to speedup LVLM inference by pruning unnecessary visual tokens. <b>Our finding is Counterintuitive.</b> Tokens inside the object are <b>less</b> similar to the text.
+          </p>
+        </article>
+
+        <div class="similarity-video-carousel" data-carousel>
+          <div class="carousel-instruction" data-carousel-instruction>
+            Please segment the player wearing green cleats
+          </div>
+
+          <div class="similarity-video-viewport">
+            <button class="carousel-nav carousel-nav-prev" type="button" data-carousel-prev aria-label="Previous video">
+              <span aria-hidden="true">&#8249;</span>
+            </button>
+
+            <div class="similarity-video-track">
+              <figure class="similarity-video-slide is-active" data-carousel-slide>
+                <video src="./video/finding/example-01.mp4" autoplay muted loop playsinline preload="auto"></video>
+              </figure>
+              <figure class="similarity-video-slide" data-carousel-slide>
+                <video src="./video/finding/example-02.mp4" autoplay muted loop playsinline preload="metadata"></video>
+              </figure>
+              <figure class="similarity-video-slide" data-carousel-slide>
+                <video src="./video/finding/example-03.mp4" autoplay muted loop playsinline preload="metadata"></video>
+              </figure>
+              <figure class="similarity-video-slide" data-carousel-slide>
+                <video src="./video/finding/example-04.mp4" autoplay muted loop playsinline preload="metadata"></video>
+              </figure>
+              <figure class="similarity-video-slide" data-carousel-slide>
+                <video src="./video/finding/example-05.mp4" autoplay muted loop playsinline preload="metadata"></video>
+              </figure>
+              <figure class="similarity-video-slide" data-carousel-slide>
+                <video src="./video/finding/example-06.mp4" autoplay muted loop playsinline preload="metadata"></video>
+              </figure>
+              <figure class="similarity-video-slide" data-carousel-slide>
+                <video src="./video/finding/example-07.mp4" autoplay muted loop playsinline preload="metadata"></video>
+              </figure>
+              <figure class="similarity-video-slide" data-carousel-slide>
+                <video src="./video/finding/example-08.mp4" autoplay muted loop playsinline preload="metadata"></video>
+              </figure>
+              <figure class="similarity-video-slide" data-carousel-slide>
+                <video src="./video/finding/example-09.mp4" autoplay muted loop playsinline preload="metadata"></video>
+              </figure>
+              <figure class="similarity-video-slide" data-carousel-slide>
+                <video src="./video/finding/example-10.mp4" autoplay muted loop playsinline preload="metadata"></video>
+              </figure>
+            </div>
+
+            <button class="carousel-nav carousel-nav-next" type="button" data-carousel-next aria-label="Next video">
+              <span aria-hidden="true">&#8250;</span>
+            </button>
+          </div>
+
+          <div class="carousel-dots" role="tablist" aria-label="Similarity reversal video examples">
+            <button class="carousel-dot is-active" type="button" data-carousel-dot aria-label="Show video 1"></button>
+            <button class="carousel-dot" type="button" data-carousel-dot aria-label="Show video 2"></button>
+            <button class="carousel-dot" type="button" data-carousel-dot aria-label="Show video 3"></button>
+            <button class="carousel-dot" type="button" data-carousel-dot aria-label="Show video 4"></button>
+            <button class="carousel-dot" type="button" data-carousel-dot aria-label="Show video 5"></button>
+            <button class="carousel-dot" type="button" data-carousel-dot aria-label="Show video 6"></button>
+            <button class="carousel-dot" type="button" data-carousel-dot aria-label="Show video 7"></button>
+            <button class="carousel-dot" type="button" data-carousel-dot aria-label="Show video 8"></button>
+            <button class="carousel-dot" type="button" data-carousel-dot aria-label="Show video 9"></button>
+            <button class="carousel-dot" type="button" data-carousel-dot aria-label="Show video 10"></button>
+          </div>
+        </div>
+
+        <article class="insight-card insight-card-wide">
+          <div class="insight-label">03</div>
+          <h3>Text Attention Sink</h3>
+          <p>
+            The [EOS] token should summarize the text, but it gets stuck on <strong>[SOS]</strong>, not what actually matters.
+          </p>
+        </article>
+
+        <figure class="attention-sink-figure-card">
+          <svg class="attention-sink-viz" viewBox="0 0 1514 1086" role="img" aria-labelledby="attention-sink-title attention-sink-desc">
+            <title id="attention-sink-title">Interactive text attention sink visualization</title>
+            <desc id="attention-sink-desc">Hover over each token to see how the EOS token attends most strongly to SOS.</desc>
+            <defs>
+              <linearGradient id="attentionTokenWarm" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#fff8e6"/>
+                <stop offset="100%" stop-color="#ffffff"/>
+              </linearGradient>
+              <linearGradient id="attentionSinkStem" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ff7a18" stop-opacity="0.95"/>
+                <stop offset="42%" stop-color="#fff6c3" stop-opacity="0.92"/>
+                <stop offset="100%" stop-color="#ff8a24" stop-opacity="0.52"/>
+              </linearGradient>
+              <linearGradient id="attentionOrangeFlow" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ff8a24"/>
+                <stop offset="72%" stop-color="#ff4d00"/>
+                <stop offset="100%" stop-color="#ff4d00"/>
+              </linearGradient>
+              <radialGradient id="attentionSinkGlow" cx="50%" cy="48%" r="48%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="20%" stop-color="#fff6bf"/>
+                <stop offset="50%" stop-color="#ff9f2d" stop-opacity="0.46"/>
+                <stop offset="100%" stop-color="#ff7a18" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="attentionSoftShadow" x="-18%" y="-18%" width="136%" height="136%">
+                <feDropShadow dx="0" dy="8" stdDeviation="11" flood-color="#f97316" flood-opacity="0.16"/>
+              </filter>
+              <filter id="attentionSoftGlow" x="-35%" y="-35%" width="170%" height="170%">
+                <feGaussianBlur stdDeviation="6" result="blur"/>
+                <feMerge>
+                  <feMergeNode in="blur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+              <marker id="attentionArrowBlue" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse">
+                <path d="M0,0 L16,8 L0,16 Z" fill="#2563eb"/>
+              </marker>
+              <marker id="attentionArrowBlueSoft" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse">
+                <path d="M0,0 L16,8 L0,16 Z" fill="#7da2f2"/>
+              </marker>
+              <marker id="attentionArrowOrange" markerWidth="18" markerHeight="18" refX="15" refY="9" orient="auto" markerUnits="userSpaceOnUse">
+                <path d="M0,0 L18,9 L0,18 Z" fill="#ff7a18"/>
+              </marker>
+              <marker id="attentionArrowOrangeSoft" markerWidth="17" markerHeight="17" refX="14" refY="8.5" orient="auto" markerUnits="userSpaceOnUse">
+                <path d="M0,0 L17,8.5 L0,17 Z" fill="#ff9a4a"/>
+              </marker>
+              <marker id="attentionArrowGray" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse">
+                <path d="M0,0 L16,8 L0,16 Z" fill="#6f737b"/>
+              </marker>
+            </defs>
+
+            <g class="attention-sink-core">
+              <rect x="613" y="25" width="292" height="150" rx="20" class="attention-eos-box"/>
+              <text x="759" y="116" text-anchor="middle" class="attention-special attention-eos-label">[EOS]</text>
+              <circle cx="759" cy="377" r="170" class="attention-glow"/>
+              <path d="M759 174 C750 218 736 247 704 278 C736 292 782 292 814 278 C780 247 767 218 759 174Z" class="attention-funnel"/>
+              <ellipse cx="759" cy="280" rx="156" ry="35" class="attention-ring attention-ring-outer"/>
+              <ellipse cx="759" cy="280" rx="111" ry="19" class="attention-ring attention-ring-inner"/>
+              <path d="M651 279 C708 337 721 424 724 550 C744 456 774 347 868 280" class="attention-funnel-light"/>
+              <path d="M759 174 C756 268 755 394 755 564" class="attention-stem-light"/>
+              <circle cx="758" cy="381" r="32" class="attention-center-spark"/>
+            </g>
+
+            <g class="attention-flows" aria-hidden="true">
+              <path class="attention-flow attention-flow-sos" data-attention-target="sos" d="M748 279 C585 367 301 427 84 846"/>
+              <polygon class="attention-arrowhead attention-arrow-sos" data-attention-target="sos" points="53,843 113,843 83,902"/>
+              <path class="attention-flow attention-flow-user" data-attention-target="please" d="M716 303 C560 430 330 493 224 864"/>
+              <path class="attention-flow attention-flow-user attention-flow-user-soft" data-attention-target="segment" d="M733 312 C604 453 410 539 385 864"/>
+              <path class="attention-flow attention-flow-user attention-flow-user-soft" data-attention-target="the" d="M749 321 C650 478 532 585 533 864"/>
+              <path class="attention-flow attention-flow-semantic" data-attention-target="player" d="M766 320 C780 493 777 675 777 864"/>
+              <path class="attention-flow attention-flow-semantic" data-attention-target="wearing" d="M797 309 C895 464 940 605 936 864"/>
+              <path class="attention-flow attention-flow-semantic attention-flow-semantic-soft" data-attention-target="green" d="M822 300 C1012 425 1086 584 1088 864"/>
+              <path class="attention-flow attention-flow-semantic attention-flow-semantic-soft" data-attention-target="cleats" d="M842 291 C1114 397 1223 574 1235 864"/>
+              <path class="attention-flow attention-flow-ending" data-attention-target="eos-end" d="M1374 704 C1430 765 1445 824 1434 864"/>
+            </g>
+
+            <g class="attention-hit-areas" aria-hidden="true">
+              <path class="attention-hit" data-attention-target="sos" d="M748 279 C585 367 301 427 84 846"/>
+              <path class="attention-hit" data-attention-target="please" d="M716 303 C560 430 330 493 224 864"/>
+              <path class="attention-hit" data-attention-target="segment" d="M733 312 C604 453 410 539 385 864"/>
+              <path class="attention-hit" data-attention-target="the" d="M749 321 C650 478 532 585 533 864"/>
+              <path class="attention-hit" data-attention-target="player" d="M766 320 C780 493 777 675 777 864"/>
+              <path class="attention-hit" data-attention-target="wearing" d="M797 309 C895 464 940 605 936 864"/>
+              <path class="attention-hit" data-attention-target="green" d="M822 300 C1012 425 1086 584 1088 864"/>
+              <path class="attention-hit" data-attention-target="cleats" d="M842 291 C1114 397 1223 574 1235 864"/>
+              <path class="attention-hit" data-attention-target="eos-end" d="M1374 704 C1430 765 1445 824 1434 864"/>
+            </g>
+
+            <g class="attention-values" aria-hidden="true">
+              <text x="110" y="650" text-anchor="middle" class="attention-value attention-value-sos" data-attention-target="sos">68%</text>
+              <text x="255" y="650" text-anchor="middle" class="attention-value attention-value-user" data-attention-target="please">7%</text>
+              <text x="350" y="650" text-anchor="middle" class="attention-value attention-value-user" data-attention-target="segment">5%</text>
+              <text x="630" y="650" text-anchor="middle" class="attention-value attention-value-user" data-attention-target="the">3%</text>
+              <text x="700" y="650" text-anchor="middle" class="attention-value attention-value-semantic" data-attention-target="player">2%</text>
+              <text x="1000" y="650" text-anchor="middle" class="attention-value attention-value-semantic" data-attention-target="wearing">5%</text>
+              <text x="1150" y="650" text-anchor="middle" class="attention-value attention-value-semantic" data-attention-target="green">1%</text>
+              <text x="1275" y="650" text-anchor="middle" class="attention-value attention-value-semantic" data-attention-target="cleats">6%</text>
+              <text x="1350" y="650" text-anchor="middle" class="attention-value attention-value-ending" data-attention-target="eos-end">3%</text>
+            </g>
+
+            <g class="attention-tokens">
+              <g class="attention-token attention-token-special" data-attention-target="sos" tabindex="0" role="button" aria-label="SOS attention weight 0.68">
+                <rect x="8" y="902" width="150" height="112" rx="14"/>
+                <text x="83" y="970" text-anchor="middle">[SOS]</text>
+              </g>
+              <g class="attention-token" data-attention-target="please" tabindex="0" role="button" aria-label="Please attention weight 0.15">
+                <rect x="170" y="902" width="158" height="112" rx="14"/>
+                <text x="249" y="970" text-anchor="middle">please</text>
+              </g>
+              <g class="attention-token" data-attention-target="segment" tabindex="0" role="button" aria-label="segment attention weight 0.15">
+                <rect x="340" y="902" width="168" height="112" rx="14"/>
+                <text x="424" y="970" text-anchor="middle">segment</text>
+              </g>
+              <g class="attention-token" data-attention-target="the" tabindex="0" role="button" aria-label="the attention weight 0.15">
+                <rect x="520" y="902" width="128" height="112" rx="14"/>
+                <text x="584" y="970" text-anchor="middle">the</text>
+              </g>
+              <g class="attention-token attention-token-warm" data-attention-target="player" tabindex="0" role="button" aria-label="player attention weight 0.14">
+                <rect x="676" y="902" width="158" height="112" rx="14"/>
+                <text x="755" y="970" text-anchor="middle">player</text>
+              </g>
+              <g class="attention-token attention-token-warm" data-attention-target="wearing" tabindex="0" role="button" aria-label="wearing attention weight 0.14">
+                <rect x="846" y="902" width="170" height="112" rx="14"/>
+                <text x="931" y="970" text-anchor="middle">wearing</text>
+              </g>
+              <g class="attention-token attention-token-warm" data-attention-target="green" tabindex="0" role="button" aria-label="green attention weight 0.14">
+                <rect x="1028" y="902" width="146" height="112" rx="14"/>
+                <text x="1101" y="970" text-anchor="middle">green</text>
+              </g>
+              <g class="attention-token attention-token-warm" data-attention-target="cleats" tabindex="0" role="button" aria-label="cleats attention weight 0.14">
+                <rect x="1186" y="902" width="152" height="112" rx="14"/>
+                <text x="1262" y="970" text-anchor="middle">cleats</text>
+              </g>
+              <g class="attention-token attention-token-special" data-attention-target="eos-end" tabindex="0" role="button" aria-label="ending EOS attention weight 0.03">
+                <rect x="1350" y="902" width="156" height="112" rx="14"/>
+                <text x="1428" y="970" text-anchor="middle">[EOS]</text>
+              </g>
+            </g>
+          </svg>
+        </figure>
+      </div>
+
+      <div class="story-block">
+        <div class="section-heading">
+          <div class="section-eyebrow story-pill">GOAL</div>
+          <h2 class="title is-2"><span>Pixel</span> Grounding with Fewer Tokens</h2>
+        </div>
+
+        <article class="insight-card insight-card-wide">
+          <div class="insight-label">04</div>
+          <h3>Fewer Tokens, Faster Grounding.</h3>
+          <p>
+            We introduce <b>LiteLVLM</b>, a simple yet effective token pruning method for pixel grounding that makes LVLMs faster, lighter, and easier to use, even on non-cutting-edge hardware.
+          </p>
+        </article>
+
+        <div class="token-comparison-card" data-token-comparison>
+          <div class="token-comparison-header">
+            <h3 class="token-comparison-title"><span class="token-comparison-title-accent">How</span> Fast Can Pixel Grounding Be?</h3>
+            <span class="token-comparison-count" data-token-comparison-count>1 / 10</span>
+          </div>
+
+          <div class="token-comparison-shell">
+            <button class="carousel-nav carousel-nav-prev token-comparison-nav" type="button" data-token-comparison-prev aria-label="Previous token comparison example">
+              <span aria-hidden="true">&#8249;</span>
+            </button>
+
+            <div class="token-comparison-stack" aria-live="polite">
+              <figure class="token-comparison-row">
+                <figcaption>
+                  <span class="token-label-main">Retain <span class="token-label-number">576</span></span>
+                  <span class="token-label-sub">Visual Tokens</span>
+                  <span class="token-label-done" data-token-done="576" aria-live="polite"></span>
+                </figcaption>
+                <div class="token-video-wrap">
+                  <video data-token-video="576" src="./video/goal/576/example-01.mp4" autoplay muted playsinline preload="auto"></video>
+                </div>
+              </figure>
+              <figure class="token-comparison-row">
+                <figcaption>
+                  <span class="token-label-main">Retain <span class="token-label-number">192</span></span>
+                  <span class="token-label-sub">Visual Tokens</span>
+                  <span class="token-label-done" data-token-done="192" aria-live="polite"></span>
+                </figcaption>
+                <div class="token-video-wrap">
+                  <video data-token-video="192" src="./video/goal/192/example-01.mp4" autoplay muted playsinline preload="auto"></video>
+                </div>
+              </figure>
+            </div>
+
+            <button class="carousel-nav carousel-nav-next token-comparison-nav" type="button" data-token-comparison-next aria-label="Next token comparison example">
+              <span aria-hidden="true">&#8250;</span>
+            </button>
+          </div>
+
+          <div class="carousel-dots token-comparison-dots" role="tablist" aria-label="Retain token comparison examples">
+            <button class="carousel-dot is-active" type="button" data-token-comparison-dot aria-label="Show comparison example 1"></button>
+            <button class="carousel-dot" type="button" data-token-comparison-dot aria-label="Show comparison example 2"></button>
+            <button class="carousel-dot" type="button" data-token-comparison-dot aria-label="Show comparison example 3"></button>
+            <button class="carousel-dot" type="button" data-token-comparison-dot aria-label="Show comparison example 4"></button>
+            <button class="carousel-dot" type="button" data-token-comparison-dot aria-label="Show comparison example 5"></button>
+            <button class="carousel-dot" type="button" data-token-comparison-dot aria-label="Show comparison example 6"></button>
+            <button class="carousel-dot" type="button" data-token-comparison-dot aria-label="Show comparison example 7"></button>
+            <button class="carousel-dot" type="button" data-token-comparison-dot aria-label="Show comparison example 8"></button>
+            <button class="carousel-dot" type="button" data-token-comparison-dot aria-label="Show comparison example 9"></button>
+            <button class="carousel-dot" type="button" data-token-comparison-dot aria-label="Show comparison example 10"></button>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- LiteLVLM Description -->
-    <div
-      class="content has-text-justified"
-      style="max-width: 900px; margin: 0 auto;"
-    >
-      <p>
-        Motivated by our analysis of CLIP, we design <strong>LiteLVLM</strong>, a text-guided token pruning method for efficient pixel grounding. Considering the visual-text similarity reversal, we first retain visual tokens with <strong>low similarity</strong> to the [EOS] token —
-        <strong>similarity-aware tokens</strong>. Then, we recover <strong>contextually informative tokens</strong> — <strong>context-aware tokens</strong>. Finally, all these tokens pass through the LLM, and the pixel decoder generates a <strong>pixel-level segmentation mask</strong>.
-      </p>
+  <section class="section animation-section">
+    <div class="container is-max-widescreen">
+      <div class="animation-panel">
+        <div class="animation-heading">
+          <h2 class="title is-3">
+            <span class="section-emoji">✨</span>
+            <span>Token</span> Pruning Animation</h2>
+          <p>Explore which tokens LiteLVLM retains and prunes.</p>
+        </div>
+
+        <div class="animation-layout">
+          <figure class="animation-frame-card animation-side-frame">
+            <div class="animation-card-title">
+              <span class="animation-step">1</span>
+              <span>Input Image</span>
+            </div>
+            <div class="animation-image-box">
+              <img src="./static/images/zidane.png" alt="Input image">
+            </div>
+          </figure>
+
+          <figure class="animation-frame-card animation-center-frame">
+            <div class="animation-card-title">
+              <span class="animation-step">2</span>
+              <span>Similarity-aware Tokens</span>
+            </div>
+            <div class="animation-image-box">
+              <img
+                id="similarity-token-image"
+                src="./demo/similarity/similarity_32.png"
+                alt="Similarity-aware token visualization"
+              >
+            </div>
+          </figure>
+
+          <figure class="animation-frame-card animation-center-frame">
+            <div class="animation-card-title">
+              <span class="animation-step">3</span>
+              <span>Context-aware Tokens</span>
+            </div>
+            <div class="animation-image-box">
+              <img
+                id="context-token-image"
+                src="./demo/context/context_32.png"
+                alt="Context-aware token visualization"
+              >
+            </div>
+          </figure>
+
+          <figure class="animation-frame-card animation-side-frame">
+            <div class="animation-card-title">
+              <span class="animation-step">4</span>
+              <span>Pixel Grounding Output</span>
+            </div>
+            <div class="animation-image-box">
+              <img
+                id="result-token-image"
+                src="./demo/result/result_32.png"
+                alt="Pixel grounding output"
+              >
+            </div>
+          </figure>
+        </div>
+
+        <div class="animation-control">
+          <input
+            id="token-slider"
+            class="token-slider"
+            type="range"
+            min="32"
+            max="575"
+            value="32"
+            step="1"
+            aria-label="Retained visual token count"
+          >
+          <div id="token-slider-label" class="token-slider-label">
+            Retain <span>32</span> Visual Tokens
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- LiteLVLM Main Figure -->
-    <div class="has-text-centered" style="margin-top: 2rem;">
-      <img
-        src="./static/images/method.png"
-        alt="LiteLVLM Method Overview"
-        style="
-          max-width: 950px;
-          width: 100%;
-          height: auto;
-          display: inline-block;
-        "
-      >
+  <section class="section mechanism-section">
+    <div class="container is-max-widescreen">
+      <div class="method-overview-card">
+        <div class="method-title">
+          <h2 class="title is-2"><span>Lite</span>LVLM</h2>
+        </div>
+
+        <div class="content method-copy">
+          <p>
+            We design <strong>LiteLVLM</strong>, a text-guided token pruning method for efficient pixel grounding. Considering the visual-text similarity reversal, we first retain visual tokens with <strong>low similarity</strong> to the [EOS] token - <span class="method-token-accent">similarity-aware tokens</span>. Then, we recover <strong>contextually informative tokens</strong> - <span class="method-token-accent">context-aware tokens</span>. Finally, all these tokens pass through the LLM, and the pixel decoder generates a pixel-level segmentation mask.
+          </p>
+        </div>
+
+        <figure class="figure-card method-figure-card">
+          <img src="./static/images/method.png" alt="LiteLVLM Method Overview">
+        </figure>
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
-  
-<section class="section">
-  <div class="container is-max-desktop">
+  <section class="section results-section">
+    <div class="container is-max-widescreen">
+      <div id="evaluation-table-root"></div>
 
-    <h2 class="title is-2 has-text-centered">
-      Evaluate Pixel Grounding
-    </h2>
+      <div class="efficiency-heading">
+        <div class="evaluation-pill">EFFICIENCY</div>
+        <h2 class="title efficiency-title"><span>How</span> Efficient Is LiteLVLM?</h2>
+      </div>
 
-    <!-- Referring Expression Segmentation -->
-    <h3 class="title is-4 has-text-centered">
-      Referring Expression Segmentation
-    </h3>
+      <div class="efficiency-showcase">
+        <div class="efficiency-legend" aria-label="Efficiency chart legend">
+          <span><i class="legend-fastv"></i>FastV</span>
+          <span><i class="legend-vispruner"></i>VisPruner</span>
+          <span><i class="legend-litelvlm"></i>LiteLVLM (Ours)</span>
+        </div>
 
-    <figure class="image has-text-centered" style="margin-bottom: 3rem;">
-      <img
-        src="./static/tables/table-1.svg"
-        alt="Referring Expression Segmentation"
-        style="width:90%; height:auto;">
-    </figure>
+        <div class="efficiency-grid">
+          <article class="efficiency-card">
+            <div class="efficiency-card-head">
+              <span class="efficiency-icon"><i class="fas fa-cube"></i></span>
+              <div>
+                <h3>FLOPs (TB)</h3>
+              </div>
+              <span class="upper-bound">Baseline <b>4.66</b></span>
+            </div>
+            <div class="efficiency-chart">
+              <div class="upper-bound-line"></div>
+              <div class="efficiency-group">
+                <div class="bar-set">
+                  <span class="efficiency-bar fastv" style="--bar-height: 57%;"><b>2.65</b></span>
+                  <span class="efficiency-bar vispruner" style="--bar-height: 47%;"><b>2.17</b></span>
+                  <span class="efficiency-bar litelvlm is-best" style="--bar-height: 45%;"><b>2.11</b></span>
+                </div>
+                <div class="efficiency-xlabel">Retain 192</div>
+              </div>
+              <div class="efficiency-group">
+                <div class="bar-set">
+                  <span class="efficiency-bar fastv" style="--bar-height: 48%;"><b>2.23</b></span>
+                  <span class="efficiency-bar vispruner" style="--bar-height: 29%;"><b>1.33</b></span>
+                  <span class="efficiency-bar litelvlm is-best" style="--bar-height: 27%;"><b>1.27</b></span>
+                </div>
+                <div class="efficiency-xlabel">Retain 64</div>
+              </div>
+            </div>
+          </article>
 
-    <!-- Referring Video Object Segmentation -->
-    <h3 class="title is-4 has-text-centered">
-      Referring Video Object Segmentation
-    </h3>
+          <article class="efficiency-card">
+            <div class="efficiency-card-head">
+              <span class="efficiency-icon"><i class="fas fa-stopwatch"></i></span>
+              <div>
+                <h3>Prefilling Time (ms)</h3>
+              </div>
+              <span class="upper-bound">Baseline <b>166.25</b></span>
+            </div>
+            <div class="efficiency-chart">
+              <div class="upper-bound-line"></div>
+              <div class="efficiency-group">
+                <div class="bar-set">
+                  <span class="efficiency-bar fastv" style="--bar-height: 98%;"><b>162.88</b></span>
+                  <span class="efficiency-bar vispruner" style="--bar-height: 46%;"><b>75.65</b></span>
+                  <span class="efficiency-bar litelvlm is-best" style="--bar-height: 45%;"><b>74.88</b></span>
+                </div>
+                <div class="efficiency-xlabel">Retain 192</div>
+              </div>
+              <div class="efficiency-group">
+                <div class="bar-set">
+                  <span class="efficiency-bar fastv" style="--bar-height: 95%;"><b>157.50</b></span>
+                  <span class="efficiency-bar vispruner" style="--bar-height: 33%;"><b>54.77</b></span>
+                  <span class="efficiency-bar litelvlm is-best" style="--bar-height: 32%;"><b>54.02</b></span>
+                </div>
+                <div class="efficiency-xlabel">Retain 64</div>
+              </div>
+            </div>
+          </article>
 
-    <div style="display:flex; gap:24px; align-items:flex-start;">
+          <article class="efficiency-card">
+            <div class="efficiency-card-head">
+              <span class="efficiency-icon"><i class="fas fa-bolt"></i></span>
+              <div>
+                <h3>CUDA Time (ms)</h3>
+              </div>
+              <span class="upper-bound">Baseline <b>340.89</b></span>
+            </div>
+            <div class="efficiency-chart">
+              <div class="upper-bound-line"></div>
+              <div class="efficiency-group">
+                <div class="bar-set">
+                  <span class="efficiency-bar fastv" style="--bar-height: 100%;"><b>340.25</b></span>
+                  <span class="efficiency-bar vispruner" style="--bar-height: 81%;"><b>276.09</b></span>
+                  <span class="efficiency-bar litelvlm is-best" style="--bar-height: 78%;"><b>265.83</b></span>
+                </div>
+                <div class="efficiency-xlabel">Retain 192</div>
+              </div>
+              <div class="efficiency-group">
+                <div class="bar-set">
+                  <span class="efficiency-bar fastv" style="--bar-height: 99%;"><b>338.65</b></span>
+                  <span class="efficiency-bar vispruner" style="--bar-height: 74%;"><b>253.10</b></span>
+                  <span class="efficiency-bar litelvlm is-best" style="--bar-height: 70%;"><b>237.35</b></span>
+                </div>
+                <div class="efficiency-xlabel">Retain 64</div>
+              </div>
+            </div>
+          </article>
 
-      <figure style="flex:1; text-align:center;">
-        <img
-          src="./static/tables/table-2.svg"
-          alt="Ref-DAVIS-17"
-          style="width:100%; height:auto;">
+          <article class="efficiency-card">
+            <div class="efficiency-card-head">
+              <span class="efficiency-icon"><i class="fas fa-database"></i></span>
+              <div>
+                <h3>Storing Activation (GB)</h3>
+              </div>
+              <span class="upper-bound">Baseline <b>0.81</b></span>
+            </div>
+            <div class="efficiency-chart">
+              <div class="upper-bound-line"></div>
+              <div class="efficiency-group">
+                <div class="bar-set">
+                  <span class="efficiency-bar fastv" style="--bar-height: 100%;"><b>0.81</b></span>
+                  <span class="efficiency-bar vispruner" style="--bar-height: 46%;"><b>0.37</b></span>
+                  <span class="efficiency-bar litelvlm is-best" style="--bar-height: 43%;"><b>0.35</b></span>
+                </div>
+                <div class="efficiency-xlabel">Retain 192</div>
+              </div>
+              <div class="efficiency-group">
+                <div class="bar-set">
+                  <span class="efficiency-bar fastv" style="--bar-height: 99%;"><b>0.80</b></span>
+                  <span class="efficiency-bar vispruner" style="--bar-height: 28%;"><b>0.23</b></span>
+                  <span class="efficiency-bar litelvlm is-best" style="--bar-height: 26%;"><b>0.21</b></span>
+                </div>
+                <div class="efficiency-xlabel">Retain 64</div>
+              </div>
+            </div>
+          </article>
+        </div>
 
-        <figcaption style="
-          margin-top:10px;
-          font-weight:600;
-          font-size:0.95rem;">
-          Ref-DAVIS-17
-        </figcaption>
-      </figure>
+        <div class="efficiency-summary">
+          <div><span><i class="fas fa-bolt"></i></span><b>22%</b><p>faster CUDA time @192</p></div>
+          <div><span><i class="fas fa-bolt"></i></span><b>30.4%</b><p>faster CUDA time @64</p></div>
+          <div><span><i class="fas fa-database"></i></span><b>2.3×</b><p>lower activation memory @192</p></div>
+          <div><span><i class="fas fa-database"></i></span><b>3.9×</b><p>lower activation memory @64</p></div>
+        </div>
+      </div>
 
-      <figure style="flex:1; text-align:center;">
-        <img
-          src="./static/tables/table-3.svg"
-          alt="Refer-YouTube-VOS"
-          style="width:100%; height:auto;">
+      <div class="visualization-showcase">
+        <div class="visualization-heading">
+          <h2 class="title is-3">
+            <span class="visualization-icon" aria-hidden="true"><i class="fas fa-chart-line"></i></span>
+            <span><span class="visualization-title-accent">V</span>isualizations</span>
+          </h2>
+        </div>
 
-        <figcaption style="
-          margin-top:10px;
-          font-weight:600;
-          font-size:0.95rem;">
-          Refer-YouTube-VOS
-        </figcaption>
-      </figure>
-
+        <figure class="figure-card visualization-figure-card">
+          <img src="./static/images/visualize.svg" alt="LiteLVLM qualitative visualization">
+        </figure>
+      </div>
     </div>
+  </section>
 
-      <!-- Visualization -->
-    <figure class="image" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
-      <img
-        src="./static/images/visualize.svg"
-        alt="visualization"
-        style="width:100%;">
-    </figure>
-  </div>
-</section>
+  <section class="section info-section">
+    <div class="container is-max-widescreen">
+      <div class="info-grid">
+      <div class="info-card contact-card" id="Contact">
+        <h2 class="title is-3 info-title"><span class="info-title-text"><span class="info-title-accent">C</span>ontact</span></h2>
+        <div class="contact-inner-card">
+          <p class="contact-intro">
+            <span class="contact-icon" aria-hidden="true"><i class="far fa-envelope"></i></span>
+            <span>If you have any questions, please feel free to contact us:</span>
+          </p>
+          <div class="contact-list">
+            <a class="contact-row" href="mailto:silee@rcv.sejong.ac.kr">
+              <span class="person-icon" aria-hidden="true"><i class="far fa-user"></i></span>
+              <strong>Sangin Lee</strong>
+              <span class="contact-email">silee@rcv.sejong.ac.kr</span>
+              <span class="contact-open" aria-hidden="true"><i class="fas fa-external-link-alt"></i></span>
+            </a>
+            <a class="contact-row" href="mailto:ykchoi@sejong.ac.kr">
+              <span class="person-icon" aria-hidden="true"><i class="far fa-user"></i></span>
+              <strong>Yukyung Choi</strong>
+              <span class="contact-email">ykchoi@sejong.ac.kr</span>
+              <span class="contact-open" aria-hidden="true"><i class="fas fa-external-link-alt"></i></span>
+            </a>
+          </div>
+        </div>
+      </div>
 
-<section class="section" id="Contact">
-  <div class="container is-max-desktop content">
-    <h2 class="title">Contact</h2>
-    <p>
-      If you have any questions, please feel free to contact us:
-    </p>
-    <ul>
-      <li>
-        <strong>Sangin Lee</strong>:
-        <a href="mailto:silee@rcv.sejong.ac.kr">silee@rcv.sejong.ac.kr</a>
-      </li>
-      <li>
-        <strong>Yukyung Choi</strong>:
-        <a href="mailto:ykchoi@sejong.ac.kr">ykchoi@sejong.ac.kr</a>
-      </li>
-    </ul>
-  </div>
-</section>
-  
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{lee2026clip,
+      <div class="info-card bibtex-card" id="BibTeX">
+        <div class="bibtex-heading">
+          <h2 class="title is-3 info-title"><span class="info-title-text"><span class="info-title-accent">B</span>ibTeX</span></h2>
+          <button class="copy-bibtex-button" type="button" data-copy-target="bibtex-code">
+            <span class="icon"><i class="far fa-copy"></i></span>
+            <span>Copy BibTeX</span>
+          </button>
+        </div>
+        <pre class="bib-card"><code id="bibtex-code">@article{lee2026clip,
   author    = {Lee, Sangin and Choi, Yukyung},
   title     = {CLIP Tricks You: Training-free Token Pruning for Efficient Pixel Grounding in Large VIsion-Language Models},
   journal   = {arXiv preprint arXiv:2605.13178},
   year      = {2026},
 }</code></pre>
-  </div>
-</section>
-
-
-<footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
-          </p>
-        </div>
+      </div>
       </div>
     </div>
-  </div>
-</footer>
+  </section>
+</main>
 
 </body>
 </html>
